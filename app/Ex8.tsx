@@ -72,7 +72,6 @@ export default function Bt8() {
                 : styles.arrowButtonEnabled
             }`}
           >
-            {/* <FontAwesomeIcon icon={faArrowLeft} className="w-5 h-5" /> */}
           </button>
           {renderPaginationButtons()}
           <button
@@ -84,7 +83,6 @@ export default function Bt8() {
                 : styles.arrowButtonEnabled
             }`}
           >
-            {/* <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" /> */}
           </button>
         </div>
       </div>
