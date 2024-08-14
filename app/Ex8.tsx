@@ -1,91 +1,57 @@
 "use client";
-import React, { useState } from "react";
-import styles from "./Ex8.css";
+import React from 'react';
+import styles from './Pagination.module.css';
+import classNames from 'classnames';
 
-export default function Bt8() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPages = 20;
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const pages = [];
 
-  const handlePageChange = (newPage: number) => {
-    if (newPage > 0 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i);
+  }
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
     }
   };
 
-  const renderPaginationButtons = () => {
-    const pageButtons = [];
-    const delta = 2;
-
-    for (let i = 1; i <= totalPages; i++) {
-      if (
-        i === 1 ||
-        i === totalPages ||
-        (i >= currentPage - delta && i <= currentPage + delta)
-      ) {
-        pageButtons.push(
-          <a
-            key={i}
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              handlePageChange(i);
-            }}
-            className={`${styles.pageButton} ${
-              currentPage === i
-                ? styles.pageButtonActive
-                : styles.pageButtonInactive
-            }`}
-          >
-            {i}
-          </a>
-        );
-      } else if (
-        i === currentPage - delta - 1 ||
-        i === currentPage + delta + 1
-      ) {
-        pageButtons.push(
-          <span key={i} className={styles.ellipsis}>
-            ...
-          </span>
-        );
-      }
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
     }
-
-    return pageButtons;
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.paginationWrapper}>
-        <div className={styles.pageInfo}>
-          <span className={styles.pageInfoText}>
-            Trang {currentPage} / {totalPages}
-          </span>
-        </div>
-        <div className={styles.buttonGroup}>
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`${styles.arrowButton} ${
-              currentPage === 1
-                ? styles.arrowButtonDisabled
-                : styles.arrowButtonEnabled
-            }`}
+    <ul className={styles.pagination}>
+      <li>
+        <a
+          onClick={handlePrev}
+          className={classNames({ [styles.disabled]: currentPage === 1 })}
+        >
+          Prev
+        </a>
+      </li>
+      {pages.map(page => (
+        <li key={page}>
+          <a
+            onClick={() => onPageChange(page)}
+            className={classNames({ [styles.active]: page === currentPage })}
           >
-          </button>
-          {renderPaginationButtons()}
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`${styles.arrowButton} ${
-              currentPage === totalPages
-                ? styles.arrowButtonDisabled
-                : styles.arrowButtonEnabled
-            }`}
-          >
-          </button>
-        </div>
-      </div>
-    </div>
+            {page}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          onClick={handleNext}
+          className={classNames({ [styles.disabled]: currentPage === totalPages })}
+        >
+          Next
+        </a>
+      </li>
+    </ul>
   );
-}
+};
+
+export default Pagination;
