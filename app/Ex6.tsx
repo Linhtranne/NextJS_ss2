@@ -7,14 +7,14 @@ export default function Bt6() {
       <div className="header">
         <div className="icon-title">
           <i className="fa-solid fa-bomb"></i>
-          <div className="title-text">abcd</div>
+          <div className="title-text">Logoispum</div>
         </div>
         <div className="nav-buttons">
-          <button className="nav-button">home</button>
-          <button className="nav-button">updates</button>
-          <button className="nav-button">services</button>
-          <button className="nav-button">features</button>
-          <button className="nav-button">about us</button>
+          <button className="nav-button">Home</button>
+          <button className="nav-button">Updates</button>
+          <button className="nav-button">Services</button>
+          <button className="nav-button">Features</button>
+          <button className="nav-button">About us</button>
         </div>
         <div className="user-icon">
           <i className="fa-regular fa-user"></i>
