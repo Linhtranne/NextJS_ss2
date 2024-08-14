@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import styles from './Pagination.module.css';
+import styles from './Ex8.css';
 import classNames from 'classnames';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
