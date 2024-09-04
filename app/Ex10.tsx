@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import "./Ex10.scss";
+
 
 export default function Ex10() {
   return (
