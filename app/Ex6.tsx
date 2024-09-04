@@ -1,5 +1,4 @@
 import React from "react";
-import "./Ex6.scss";
 
 export default function Ex6() {
   return (
