@@ -1,6 +1,4 @@
 import React from "react";
-import "./Ex5.scss";
-
 
 export default function Ex5() {
   return (
